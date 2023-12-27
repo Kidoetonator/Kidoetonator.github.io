@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Congratulations!</title>
+  <title>Congratulations Card</title>
   <style>
     body {
       display: flex;
@@ -11,32 +11,44 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background-color: #f0f0f0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f6f7fb, #e6ebf1); /* Light watercolor-like background */
+      font-family: 'Roboto', sans-serif;
     }
 
-    .congrats-container {
+    .congrats-card {
       text-align: center;
-      padding: 20px;
+      padding: 40px;
       border-radius: 10px;
-      background-color: #ffffff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1s ease-out;
     }
 
     .congrats-message {
       font-size: 36px;
       font-weight: bold;
-      color: #4CAF50;
-      margin-bottom: 10px;
+      color: #3498db;
+      margin-bottom: 20px;
     }
 
-    .congrats-image {
-      width: 150px;
-      height: auto;
-      border-radius: 50%;
-      margin-top: 15px;
-      animation: rotate 2s linear infinite;
+    .interactive-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .interactive-button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .interactive-button:hover {
+      background-color: #2980b9;
     }
 
     @keyframes fadeIn {
@@ -49,20 +61,34 @@
         transform: translateY(0);
       }
     }
-
-    @keyframes rotate {
-      to {
-        transform: rotate(360deg);
-      }
-    }
   </style>
 </head>
 <body>
 
-<div class="congrats-container">
+<div class="congrats-card">
   <p class="congrats-message">Congratulations!</p>
-  <img class="congrats-image" src="path/to/congrats-image.png" alt="Congratulations Image">
+  <div class="interactive-buttons">
+    <button class="interactive-button" onclick="showElement('cake')">Cake</button>
+    <button class="interactive-button" onclick="showElement('flowerBouquet')">Flower Bouquet</button>
+    <button class="interactive-button" onclick="showElement('partyPoppers')">Party Poppers</button>
+    <button class="interactive-button" onclick="showElement('fireworks')">Fireworks</button>
+  </div>
+  <div id="cake" style="display: none;">🎂 Enjoy the cake!</div>
+  <div id="flowerBouquet" style="display: none;">💐 A beautiful flower bouquet for you!</div>
+  <div id="partyPoppers" style="display: none;">🎉 Let's celebrate with party poppers!</div>
+  <div id="fireworks" style="display: none;">🎆 Fireworks to light up the celebration!</div>
 </div>
+
+<script>
+  function showElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (element.style.display === 'none') {
+      element.style.display = 'block';
+    } else {
+      element.style.display = 'none';
+    }
+  }
+</script>
 
 </body>
 </html>
