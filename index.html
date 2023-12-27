@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congratulations!</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #4CAF50; /* Green background color */
+    }
+
+    .congrats-container {
+      text-align: center;
+      color: #fff; /* White text color */
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .congrats-message {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .congrats-image {
+      width: 150px;
+      height: auto;
+      animation: rotate 2s linear infinite;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="congrats-container">
+  <p class="congrats-message">Congratulations!</p>
+  <img class="congrats-image" src="path/to/congrats-image.png" alt="Congratulations Image">
+</div>
+
+</body>
+</html>
