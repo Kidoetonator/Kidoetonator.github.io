@@ -13,6 +13,7 @@
       margin: 0;
       background: linear-gradient(to right, #f6f7fb, #e6ebf1); /* Light watercolor-like background */
       font-family: 'Roboto', sans-serif;
+      overflow: hidden; /* Prevent particles from overflowing */
     }
 
     .congrats-card {
@@ -51,6 +52,13 @@
       background-color: #2980b9;
     }
 
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -68,25 +76,68 @@
 <div class="congrats-card">
   <p class="congrats-message">Congratulations!</p>
   <div class="interactive-buttons">
-    <button class="interactive-button" onclick="showElement('cake')">Cake</button>
-    <button class="interactive-button" onclick="showElement('flowerBouquet')">Flower Bouquet</button>
-    <button class="interactive-button" onclick="showElement('partyPoppers')">Party Poppers</button>
-    <button class="interactive-button" onclick="showElement('fireworks')">Fireworks</button>
+    <button class="interactive-button" onclick="celebrate('cake')">Cake</button>
+    <button class="interactive-button" onclick="celebrate('flowerBouquet')">Flower Bouquet</button>
+    <button class="interactive-button" onclick="celebrate('partyPoppers')">Party Poppers</button>
+    <button class="interactive-button" onclick="celebrate('fireworks')">Fireworks</button>
   </div>
-  <div id="cake" style="display: none;">🎂 Enjoy the cake!</div>
-  <div id="flowerBouquet" style="display: none;">💐 A beautiful flower bouquet for you!</div>
-  <div id="partyPoppers" style="display: none;">🎉 Let's celebrate with party poppers!</div>
-  <div id="fireworks" style="display: none;">🎆 Fireworks to light up the celebration!</div>
 </div>
 
+<div id="particles-js"></div>
+
 <script>
-  function showElement(elementId) {
-    const element = document.getElementById(elementId);
-    if (element.style.display === 'none') {
-      element.style.display = 'block';
-    } else {
-      element.style.display = 'none';
-    }
+  function celebrate(type) {
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: '#3498db'
+        },
+        shape: {
+          type: type === 'fireworks' ? 'circle' : 'image',
+          image: type === 'flowerBouquet' ? { src: 'https://res.cloudinary.com/dxfq3iotg/image/upload/v1565121542/flower.png', width: 100, height: 100 } : {}
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: {
+            enable: false,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
+        },
+        size: {
+          value: 10,
+          random: true,
+          anim: {
+            enable: false,
+            speed: 40,
+            size_min: 0.1,
+            sync: false
+          }
+        },
+        line_linked: {
+          enable: false
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: 'bottom',
+          random: true,
+          straight: false,
+          out_mode: 'out',
+          bounce: false
+        }
+      },
+      retina_detect: true
+    });
   }
 </script>
 
